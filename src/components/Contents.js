@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-//컴포넌트(반복되는 덩어리 html, 자주변경되는 html 등)
+//컴포넌트(반복되는 덩어리 html, 자주변경되는 html 등등)
 function Modal({title, date, contents}) {
   return (
     <div className="modal">
