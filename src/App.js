@@ -1,25 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
 
+import Header from './components/Header';
+import Nav from './components/Nav';
+import Contents from './components/Contents';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const headerInfo = {
+        title: 'WEB', subTitle: 'world wide web !!!'
+    };
+    const navInfo = [
+        {urlName: '다음'  , urlAddress: 'www.daum.net'},
+        {urlName: '네이버', urlAddress: 'www.naver.com'},
+        {urlName: '구글'  , urlAddress: 'www.google.com'}
+    ];
+    return (
+        <div className="App" style={ {width: 250, color: 'black', borderStyle: 'dotted'} }>
+          <Header contents={headerInfo}></Header>
+          <Nav contents={navInfo}></Nav>
+          <Contents></Contents> 
+        </div>
+    );
 }
 
 export default App;
