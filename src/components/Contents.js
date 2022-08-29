@@ -23,7 +23,7 @@ function Modal2(props) {
 
 // article componant
 function Contents() {
-    console.log('contents...');
+    console.log('contents....');
 
     //변수지정
     let post = '강남 우동 맛집';
