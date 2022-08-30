@@ -1,6 +1,7 @@
 import './App.css';
 
 import Header from './components/Header';
+import Subheader from './components/Subheader';
 import Nav from './components/Nav';
 import Contents from './components/Contents';
 
@@ -14,8 +15,9 @@ function App() {
         {urlName: '구글'  , urlAddress: 'www.google.com'}
     ];
     return (
-        <div className="App" style={ {width: 250, color: 'black', borderStyle: 'dotted'} }>
+        <div className="App" style={ {width: 300, color: 'black', borderStyle: 'dotted'} }>
           <Header contents={headerInfo}></Header>
+          <Subheader desc1="...description1..."></Subheader>
           <Nav contents={navInfo}></Nav>
           <Contents></Contents> 
         </div>

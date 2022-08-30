@@ -1,11 +1,11 @@
 // header componant
-function Header({contents}) {
+function Header(props) {
     console.log('header...');
     
     return (
         <header>
-            <h1>{contents.title}</h1>
-            <p>{contents.subTitle}</p>
+            <h1>{props.contents.title}</h1>
+            <p>{props.contents.subTitle}</p>
         </header>
     );
 }

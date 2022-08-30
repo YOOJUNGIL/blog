@@ -18,14 +18,14 @@ function fnLinks(e) {
 }
 
 // nav componant
-function Nav({contents}) {
+function Nav(props) {
     console.log('nav...');
 
-    let length = contents.length;
+    let length = props.contents.length;
     let elements = '';
     if(length > 0) {
         for(let i=0; i<length; ++i) {
-          elements += '<li><a href="#" id="' + ('links' + i) + '">' + contents[i].urlName + '</a></li>';
+          elements += '<li><a href="#" id="' + ('links' + i) + '">' + props.contents[i].urlName + '</a></li>';
         }
     }
     else {
