@@ -17,15 +17,26 @@ function fnLinks(e) {
     }
 }
 
+// 함수이용 dynamicHtml생성
+function makeDynamicHtml(props) {
+    let html = [];
+    let length = props.contents.length;
+    for(let i = 0; i < length; ++i) {
+        html.push(<li><a href="#" key={i} onClick={function(){ document.getElementById('pContents').innerHTML = props.contents[i].urlDesc }}>{props.contents[i].urlName}</a></li>);
+    }
+    return html;
+}
+
 // nav componant
 function Nav(props) {
     console.log('nav...');
 
+    //dynamicHtml생성
     let length = props.contents.length;
     let elements = '';
     if(length > 0) {
         for(let i=0; i<length; ++i) {
-          elements += '<li><a href="#" id="' + ('links' + i) + '">' + props.contents[i].urlName + '</a></li>';
+          elements += '<li><a href="#" key="' + i + '" id="' + ('links' + i) + '">' + props.contents[i].urlName + '</a></li>';
         }
     }
     else {
@@ -34,8 +45,12 @@ function Nav(props) {
 
     return (
         <nav>
-            {/*unescape:string을 html인식시키기*/}
+            {/*방법1.dynamicHtml(unescape)이용*/}
             <ul onClick={fnLinks} dangerouslySetInnerHTML={{__html: elements}}></ul>
+
+            {/*방법2.함수이용*/}
+            <ul>{makeDynamicHtml(props)}</ul>
+            
             <div>
                 <p id="pContents">welcome to react ...</p>
             </div>

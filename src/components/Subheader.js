@@ -4,7 +4,9 @@ function Subheader(props) {
     
     return (
         <div>
-            {props.desc1} {props.desc2}
+            {props.desc1} 
+            <br />
+            {props.desc2}
         </div>
     );
 }
