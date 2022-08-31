@@ -7,10 +7,12 @@ import Subheader from './components/Subheader';
 import Nav from './components/Nav';
 import Contents from './components/Contents';
 import ContentsTag from './components/ContentsTag';
+import ContentsCRUD from './components/ContentsCRUD';
 
 function App() {
     const headerInfo = {
-        title: 'WEB', subTitle: 'world wide web !!!'
+        title: 'WEB'
+            , subTitle: 'world wide web !!!'
     };
 
     const navInfo = [
@@ -23,6 +25,18 @@ function App() {
         {urlName: '구글'  
             , urlAddress: 'www.google.com'
             , urlDesc: 'google !!! welcome to google.'}
+    ];
+
+    const users = [
+        {id: 1, 
+            userName: '홍길동', 
+            email: 'xcon999@abc.co.kr'},
+        {id: 2, 
+            userName: '이순신', 
+            email: 'hanmail@abc.co.kr'},
+        {id: 3, 
+            userName: '대조영', 
+            email: 'qbqefa@ebeeef.co.kr'}
     ];
 
     let isChidrenDisp = true;
@@ -40,6 +54,7 @@ function App() {
                 <li>Another item.</li>
             </Contents>
             <ContentsTag></ContentsTag>
+            <ContentsCRUD users={users}></ContentsCRUD>
         </div>
     );
 }

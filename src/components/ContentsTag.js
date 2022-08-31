@@ -34,6 +34,8 @@ function Input() {
             name: '',
             nickName: ''
         });
+
+        // 현재의 포커스를 nameInput이라는 ref로 옮긴다.
         nameInput.current.focus();
     };
 
@@ -97,7 +99,7 @@ function Users() {
 
             {/*3.건별Component에 의한 추가*/}
             {users.map(user => (
-                <User user={user}/>
+                <User user={user} key={user.id}/>
             ))}
         </div>
     );
@@ -107,7 +109,7 @@ function Users() {
 function forUsers(users) {
     let html = [];
     for(let i = 0; i < users.length; ++i) {
-        html.push(<div>{users[i].id}<span></span><span>{users[i].userName}</span><span>{users[i].email}</span></div>);
+        html.push(<div key={i}>{users[i].id}<span></span><span>{users[i].userName}</span><span>{users[i].email}</span></div>);
     }
     return html;
 }
@@ -116,7 +118,7 @@ function forUsers(users) {
 function mapUsers(users) {
     let html = [];
     users.forEach(function(user){
-        html.push(<div>{user.id}<span></span><span>{user.userName}</span><span>{user.email}</span></div>);
+        html.push(<div key={user.id}>{user.id}<span></span><span>{user.userName}</span><span>{user.email}</span></div>);
     });
     return html;
 }

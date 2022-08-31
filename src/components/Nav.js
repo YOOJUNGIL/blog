@@ -22,7 +22,7 @@ function makeDynamicHtml(props) {
     let html = [];
     let length = props.contents.length;
     for(let i = 0; i < length; ++i) {
-        html.push(<li><a href="#" key={i} onClick={function(){ document.getElementById('pContents').innerHTML = props.contents[i].urlDesc }}>{props.contents[i].urlName}</a></li>);
+        html.push(<li key={i}><a href="#" onClick={function(){ document.getElementById('pContents').innerHTML = props.contents[i].urlDesc }}>{props.contents[i].urlName}</a></li>);
     }
     return html;
 }
