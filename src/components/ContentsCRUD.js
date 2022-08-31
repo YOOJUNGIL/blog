@@ -1,7 +1,25 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react';
+
+// 활성사용자수
+function countActiveUsers(users) {
+    const activeCount = users.filter(user => user.active).length;
+    console.log('활성사용자수 카운팅 : ' + activeCount);
+    return activeCount;
+}
 
 // User컴포넌트(건별추가)
 function User({user, onRemove, onToggle}) {
+    // 이벤트(useEffect)가 명확하지 않음
+    useEffect(() => {
+        console.log('user 값이 설정됨');
+        console.log(user);
+
+        return () => {
+            console.log('user 가 바뀌기 전..');
+            console.log(user);
+        };
+    }, [user]);
+
     return (
         <div>
             <span>{user.id}</span>
@@ -87,18 +105,28 @@ function ContentsCRUD(props) {
     };
 
     // 반전
+    //function onToggle(id){} es5에서 es6 대체문법 적용
     const onToggle = (id) => {
-        console.log(id);
         setUsers(users.map(user => user.id === id ? {...user, active: !user.active} : user));
     };
 
     // id초기값
     const nextId = useRef(4);
 
+    // 활성사용자수
+    // 활성 사용자 수를 세는건, users 에 변화가 있을때만 세야되는건데, input 값이 바뀔 때에도 컴포넌트가 리렌더링 되므로 
+    // 이렇게 불필요할때에도 호출하여서 자원낭비 방지, useMemo 사용
+    //function countActiveUsers() {
+    //    return users.filter(user => user.active).length;
+    //};
+    //const activeCount = countActiveUsers(users);
+    const activeCount = useMemo(() => countActiveUsers(users), [users]);
+
     return (
         <div style={{padding: '5px', backgroundColor: '#e1e0b3'}}>
             <CreateUser userName={userName} email={email} onChange={onChange} onCreate={onCreate}/>
             <Users users={users} onRemove={onRemove} onToggle={onToggle}/>
+            <div>활성사용자수 : {activeCount}</div>
         </div>
     );
 }
