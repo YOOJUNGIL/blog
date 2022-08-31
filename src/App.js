@@ -30,13 +30,16 @@ function App() {
     const users = [
         {id: 1, 
             userName: '홍길동', 
-            email: 'xcon999@abc.co.kr'},
+            email: 'xcon999@abc.co.kr',
+            active: true},
         {id: 2, 
             userName: '이순신', 
-            email: 'hanmail@abc.co.kr'},
+            email: 'hanmail@abc.co.kr',
+            active: false},
         {id: 3, 
             userName: '대조영', 
-            email: 'qbqefa@ebeeef.co.kr'}
+            email: 'qbqefa@ebeeef.co.kr',
+            active: false}
     ];
 
     let isChidrenDisp = true;

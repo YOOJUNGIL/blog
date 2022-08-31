@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react';
 
 // User컴포넌트(건별추가)
-function User({user, onRemove}) {
+function User({user, onRemove, onToggle}) {
     return (
         <div>
             <span>{user.id}</span>
-            <span>{user.userName}</span>
+            <span><b onClick={() => onToggle(user.id)} style={{cursor: 'pointer', color: user.active ? 'green' : 'red'}}>{user.userName}</b></span>
             <span>{user.email}</span>
             {/*function(){onRemove(user.id)} es5 : es6 () => onRemove(user.id)*/}
             <button onClick={() => onRemove(user.id)}>삭제</button>
@@ -14,11 +14,11 @@ function User({user, onRemove}) {
 }
 
 // Users컴포넌트
-function Users({users, onRemove}) {
+function Users({users, onRemove, onToggle}) {
     return (
         <div>
             {users.map(user => (
-                <User user={user} onRemove={onRemove} key={user.id}/>
+                <User user={user} onRemove={onRemove} onToggle={onToggle} key={user.id}/>
             ))}
         </div>
     );
@@ -86,13 +86,19 @@ function ContentsCRUD(props) {
         setUsers(users.filter(user => user.id !== id));
     };
 
+    // 반전
+    const onToggle = (id) => {
+        console.log(id);
+        setUsers(users.map(user => user.id === id ? {...user, active: !user.active} : user));
+    };
+
     // id초기값
     const nextId = useRef(4);
 
     return (
         <div style={{padding: '5px', backgroundColor: '#e1e0b3'}}>
             <CreateUser userName={userName} email={email} onChange={onChange} onCreate={onCreate}/>
-            <Users users={users} onRemove={onRemove}/>
+            <Users users={users} onRemove={onRemove} onToggle={onToggle}/>
         </div>
     );
 }
