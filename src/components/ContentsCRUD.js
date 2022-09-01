@@ -1,17 +1,21 @@
 import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 
+// [성능개선]
 // useMemo      : 특정 결과값을 재사용 할 때 사용
 // useCallback  : 특정 함수를 재사용 할 때 사용, 배열에 값들이 최신값으로핸들링됨
+// React.memo   : 리랜더링방지에 의한 성능개선
 
 // 활성사용자수
-function countActiveUsers(users) {
+//function countActiveUsers(users){} es5에서 es6 대체문법 적용
+const countActiveUsers = (users) => {
     const activeCount = users.filter(user => user.active).length;
     console.log('활성사용자수 카운팅 : ' + activeCount);
     return activeCount;
 }
 
 // User컴포넌트(건별추가)
-function User({user, onRemove, onToggle}) {
+//function User({{user, onRemove, onToggle}}){} es5에서 es6 대체문법 적용
+const User = React.memo(({user, onRemove, onToggle}) => {
     // 이벤트(useEffect)가 명확하지 않음
     useEffect(() => {
         console.log('user 값이 설정됨');
@@ -32,10 +36,11 @@ function User({user, onRemove, onToggle}) {
             <button onClick={() => onRemove(user.id)}>삭제</button>
         </div>
     );
-}
+});
 
 // Users컴포넌트
-function Users({users, onRemove, onToggle}) {
+//function Users({{users, onRemove, onToggle}}){} es5에서 es6 대체문법 적용
+const Users = ({users, onRemove, onToggle}) => {
     return (
         <div>
             {users.map(user => (
@@ -45,8 +50,9 @@ function Users({users, onRemove, onToggle}) {
     );
 }
 
-// create컴포넌트
-function CreateUser({userName, email, onChange, onCreate}) {
+// CreateUser컴포넌트
+//function CreateUser({userName, email, onChange, onCreate}){} es5에서 es6 대체문법 적용
+const CreateUser = React.memo(({userName, email, onChange, onCreate}) => {
     return (
         <div>
             <input type="text" name="userName" style={{width:'100px', height:'19px', fontSize:'30'}} 
@@ -60,7 +66,7 @@ function CreateUser({userName, email, onChange, onCreate}) {
             <button onClick={onCreate}>등록</button>
         </div>
     );
-}
+});
 
 // contentcrud component
 function ContentsCRUD(props) {
@@ -134,4 +140,4 @@ function ContentsCRUD(props) {
     );
 }
 
-export default ContentsCRUD;
+export default React.memo(ContentsCRUD);

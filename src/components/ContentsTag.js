@@ -135,4 +135,4 @@ function ContentsTag(props) {
     );
 }
 
-export default ContentsTag;
+export default React.memo(ContentsTag);
