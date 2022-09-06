@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 
 import './App.css';
 
@@ -51,7 +52,7 @@ function App() {
             <Header meta="리액트 테스트 페이지 입니다..." contents={headerInfo}></Header>
             <Subheader desc1="www는 어쩌고 저쩌구..."></Subheader>
             <Nav contents={navInfo}></Nav>
-            {/*속성값key=value이지만 key만 있다면 무조건 true인식됨*/}
+            <ContentsHome />
             <Contents isChidrenDisp={isChidrenDisp} dispDiv>
                 <li>First item.</li>
                 <li>Second item.</li>

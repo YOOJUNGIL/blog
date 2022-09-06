@@ -1,3 +1,5 @@
+import React from 'react';
+
 // contents home component
 function ContentsHome() {
     console.log('contents home...');
