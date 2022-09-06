@@ -26,7 +26,7 @@ function Contents(props) {
     console.log('contents....');
 
     // 변수
-    let post = '강남 우동 맛집';
+    let post = <strong>강남 우동 맛집</strong>;
 
     // state 이용한 재랜더링
     let [글제목] = useState('코드 추천');

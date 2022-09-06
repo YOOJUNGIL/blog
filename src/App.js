@@ -42,12 +42,12 @@ function App() {
             active: false}
     ];
 
-    let isChidrenDisp = true;
-    let dispDiv = false;
+    let isChidrenDisp = false;
+    let dispDiv = true;
 
     return (
         <div className="App" style={ {width: 300, color: 'black', borderStyle: 'dotted'} }>
-            <Header contents={headerInfo}></Header>
+            <Header meta="리액트 테스트 페이지 입니다..." contents={headerInfo}></Header>
             <Subheader desc1="www는 어쩌고 저쩌구..."></Subheader>
             <Nav contents={navInfo}></Nav>
             {/*속성값key=value이지만 key만 있다면 무조건 true인식됨*/}
