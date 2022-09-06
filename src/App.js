@@ -5,6 +5,7 @@ import './App.css';
 import Header from './components/Header';
 import Subheader from './components/Subheader';
 import Nav from './components/Nav';
+import ContentsHome from './components/ContentsHome';
 import Contents from './components/Contents';
 import ContentsTag from './components/ContentsTag';
 import ContentsCRUD from './components/ContentsCRUD';
